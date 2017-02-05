@@ -251,11 +251,3 @@ paket-files/
 .idea/
 *.sln.iml
 
-jspm_packages/
-*.js
-*.mp3
-*.mp4
-*.webm
-rw-course/examples/**/*.png
-!jspm.config.js
-!gulpfile.js
