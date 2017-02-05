@@ -2,9 +2,9 @@
 
 const maxCount = 10000;
 
-export const init = () => {
-  const withLibrary = location.search.indexOf('with') > 0;
+export const init = (withLibrary:boolean) => {
   document.getElementById('title').innerHTML = 'Used ' + (withLibrary ? getTitle() : 'without library');
+  document.getElementById('buttons').innerHTML = '';
   loadLazies(withLibrary);
 }
 

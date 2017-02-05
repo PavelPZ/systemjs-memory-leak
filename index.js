@@ -10,9 +10,9 @@ System.register(["./library.js"], function (exports_1, context_1) {
         ],
         execute: function () {
             maxCount = 10000;
-            exports_1("init", init = function () {
-                var withLibrary = location.search.indexOf('with') > 0;
+            exports_1("init", init = function (withLibrary) {
                 document.getElementById('title').innerHTML = 'Used ' + (withLibrary ? library_js_1.default() : 'without library');
+                document.getElementById('buttons').innerHTML = '';
                 loadLazies(withLibrary);
             });
             count = 0;

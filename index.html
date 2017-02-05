@@ -1,17 +1,19 @@
 ﻿<!doctype html>
 <html>
 <head>
-  <title>Version 1</title>
+  <title>Version 2</title>
   <script src="system.src.js"></script>
   <script src="jspm.config.js"></script>
 
-  <script>
-    System.import('index.js').then(function (m) { m.init(); }); 
-  </script>
 </head>
 <body>
   <h1 id="title"></h1>
   <div id="lazy"></div>
+  <hr/>
+  <div id="buttons">
+    <button onclick="System.import('index.js').then(function (m) { m.init(true); })">With library</button>
+    <button onclick="System.import('index.js').then(function (m) { m.init(false); })">Without library</button>
+  </div>
 </body>
 
 </html>
