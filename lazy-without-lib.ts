@@ -1,4 +1,4 @@
-﻿const title = 'without library.';
+﻿const title = 'without library';
 
 export const init = (count: number) => {
   document.getElementById('lazy').innerHTML = 'Lazy module, loading ' + count.toString() + ' times, used ' + title;

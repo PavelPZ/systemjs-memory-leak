@@ -1,29 +1,29 @@
 System.register(["./library.js"], function (exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    var library_js_1, maxCount, init, count, loadLazies;
+    var init, count, loadLazies;
     return {
         setters: [
-            function (library_js_1_1) {
-                library_js_1 = library_js_1_1;
+            function (_1) {
             }
         ],
         execute: function () {
-            maxCount = 10000;
             exports_1("init", init = function (withLibrary) {
-                document.getElementById('title').innerHTML = 'Used ' + (withLibrary ? library_js_1.default() : 'without library');
+                document.getElementById('title').innerHTML = 'Used ' + (withLibrary ? 'with library' : 'without library');
                 document.getElementById('buttons').innerHTML = '';
                 loadLazies(withLibrary);
             });
             count = 0;
             loadLazies = function (withLibrary) {
+                //load and delete 
+                // - or lazy-with-lib.js (which depends library.js) 
+                // - or lazy-without-lib (without any dependencies)
                 var id = withLibrary ? 'lazy-with-lib' : 'lazy-without-lib';
                 id = id + '.js?' + count.toString();
+                //infinite loop: import and delete selected lazy???.js 
                 System.import(id).then(function (m) {
                     m.init(count++);
                     System.delete(System.normalizeSync(id));
-                    if (count > maxCount)
-                        return;
                     setTimeout(function () { return loadLazies(withLibrary); }, 1);
                 });
             };
