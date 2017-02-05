@@ -29,6 +29,9 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="index.ts" />
+    <TypeScriptCompile Include="lazy.ts" />
+    <TypeScriptCompile Include="library.ts" />
+    <TypeScriptCompile Include="systemjs.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="tsconfig.json" />

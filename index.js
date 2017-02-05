@@ -1,14 +1,32 @@
-System.register([], function (exports_1, context_1) {
+System.register(["./library.js"], function (exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    var init;
+    var library_js_1, maxCount, init, count, loadLazies;
     return {
-        setters: [],
+        setters: [
+            function (library_js_1_1) {
+                library_js_1 = library_js_1_1;
+            }
+        ],
         execute: function () {
+            maxCount = 10000;
             exports_1("init", init = function () {
-                alert('Hallo');
+                var withLibrary = location.search.indexOf('with') > 0;
+                document.getElementById('title').innerHTML = 'Used ' + (withLibrary ? library_js_1.default() : 'without library');
+                loadLazies(withLibrary);
             });
+            count = 0;
+            loadLazies = function (withLibrary) {
+                var id = withLibrary ? 'lazy-with-lib' : 'lazy-without-lib';
+                id = id + '.js?' + count.toString();
+                System.import(id).then(function (m) {
+                    m.init(count++);
+                    System.delete(System.normalizeSync(id));
+                    if (count > maxCount)
+                        return;
+                    setTimeout(function () { return loadLazies(withLibrary); }, 1);
+                });
+            };
         }
     };
 });
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJpbmRleC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7O1lBQUEsa0JBQWEsSUFBSSxHQUFHO2dCQUNsQixLQUFLLENBQUMsT0FBTyxDQUFDLENBQUM7WUFDakIsQ0FBQyxFQUFBO1FBQUEsQ0FBQyIsInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCBjb25zdCBpbml0ID0gKCkgPT4ge1xyXG4gIGFsZXJ0KCdIYWxsbycpO1xyXG59Il19

@@ -3,8 +3,8 @@
   "compilerOptions": {
     "target": "es5",
     "module": "system",
-    "inlineSourceMap": true,
-    "inlineSources": true,
+    //"inlineSourceMap": true,
+    //"inlineSources": true,
     "lib": [
       "dom",
       "es6"
