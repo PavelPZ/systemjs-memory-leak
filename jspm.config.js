@@ -1,4 +1,9 @@
 SystemJS.config({
-  production: false
+  production: true,
+  meta: {
+    '*': {
+      scriptLoad: true
+    }
+  }
 });
 
