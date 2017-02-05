@@ -20,7 +20,7 @@ System.register(["./library.js"], function (exports_1, context_1) {
             loadLazies = function (withLibrary) {
                 //load and delete: 
                 // - or lazy-with-lib.js (which depends on library.js) 
-                // - or lazy-without-lib (without any dependencies)
+                // - or lazy-without-lib (without any dependency)
                 var id = withLibrary ? 'lazy-with-lib' : 'lazy-without-lib';
                 id = id + '.js?' + count.toString();
                 //infinite loop: import and delete lazy??.js 

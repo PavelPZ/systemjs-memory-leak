@@ -13,7 +13,7 @@ let count = 0;
 const loadLazies = (withLibrary: boolean) => {
   //load and delete: 
   // - or lazy-with-lib.js (which depends on library.js) 
-  // - or lazy-without-lib (without any dependencies)
+  // - or lazy-without-lib (without any dependency)
   let id = withLibrary ? 'lazy-with-lib' : 'lazy-without-lib';
   id = id + '.js?' + count.toString();
 
