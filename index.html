@@ -4,16 +4,61 @@
   <title>Version 6</title>
   <script src="system.src.js"></script>
   <script src="jspm.config.js"></script>
+  <script type="text/javascript">
+    function run(withDependency, scriptLoad, deleteLibrary) {
+      System.config({
+        meta: { '*': { scriptLoad: scriptLoad } }
+      });
+      System.import('index.js').then(function (m) { m.init(withDependency, scriptLoad, deleteLibrary); })
+    }
+  </script>
+  <style type="text/css">
+    table {
+      width: 600px;
+      border-collapse: collapse;
+    }
+
+    td, th {
+      padding: 10px;
+      text-align: center;
+    }
+
+    th {
+      background-color: maroon;
+      color: white;
+    }
+  </style>
+
 </head>
 <body>
   <h1 id="title"></h1>
   <div id="lazy"></div>
   <div id="buttons">
-    <h2>System.import and delete infinite loop...</h2>
-    <ul>
-      <li><button onclick="System.import('index.js').then(function (m) { m.init(true); })">...with library dependency - memory leak occurred</button><br/>&nbsp;</li>
-      <li><button onclick="System.import('index.js').then(function (m) { m.init(false); })">...without library dependency - all is correct</button></li>
-    </ul>
+    <h2>"System.import and System.delete" infinite loop</h2>
+    <table border="1">
+      <thead>
+        <tr>
+          <th></th>
+          <th>scriptLoad=true</th>
+          <th>scriptLoad=false</th>
+        </tr>
+      </thead>
+      <tr>
+        <th>with dependency</th>
+        <td><button onclick="run(true, true, false)">RUN</button></td>
+        <td><button onclick="run(true, false, false)">RUN</button></td>
+      </tr>
+      <tr>
+        <th>with dependency, delete library</th>
+        <td><button onclick="run(true, true, true)">RUN</button></td>
+        <td><button onclick="run(true, false, true)">RUN</button></td>
+      </tr>
+      <tr>
+        <th>no dependency</th>
+        <td><button onclick="run(false, true, false)">RUN</button></td>
+        <td><button onclick="run(false, false, false)">RUN</button></td>
+      </tr>
+    </table>
   </div>
 </body>
 

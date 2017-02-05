@@ -3,7 +3,7 @@
 const title = getTitle()
 
 export const init = (count: number) => {
-  document.getElementById('lazy').innerHTML = 'Lazy module, loading ' + count.toString() + ' times, used ' + title; 
+  document.getElementById('lazy').innerHTML = 'Lazy module, loading ' + count.toString() + ' times, title ' + title;   
 }
 
 //huge string

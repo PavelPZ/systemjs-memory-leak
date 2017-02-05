@@ -1,3 +1,3 @@
-﻿const getTitle = () => 'with library';
+﻿const getTitle = () => 'from library'; 
 
 export default getTitle;

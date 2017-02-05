@@ -5,7 +5,7 @@ System.register([], function (exports_1, context_1) {
     return {
         setters: [],
         execute: function () {
-            getTitle = function () { return 'with library'; };
+            getTitle = function () { return 'from library'; };
             exports_1("default", getTitle);
         }
     };
