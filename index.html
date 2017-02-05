@@ -8,10 +8,12 @@
 <body>
   <h1 id="title"></h1>
   <div id="lazy"></div>
-  <hr/>
   <div id="buttons">
-    <button onclick="System.import('index.js').then(function (m) { m.init(true); })">With library</button>
-    <button onclick="System.import('index.js').then(function (m) { m.init(false); })">Without library</button>
+    <h2>System.import and delete infinite loop...</h2>
+    <ul>
+      <li><button onclick="System.import('index.js').then(function (m) { m.init(true); })">...with library dependency - memory leak occurred</button><br/>&nbsp;</li>
+      <li><button onclick="System.import('index.js').then(function (m) { m.init(false); })">...without library dependency - all is correct</button></li>
+    </ul>
   </div>
 </body>
 
